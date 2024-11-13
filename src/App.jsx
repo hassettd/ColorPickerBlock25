@@ -1,15 +1,42 @@
-// Write your Color component here
+import { useState } from "react";
+import "./styles.css";
 
-const App = () => {
+export default function App() {
+  const [count, setCount] = useState(0);
   return (
-    <div id="container">
-      <div id="navbar">
-        <div>Currently selected: </div>
-        <div className="red">red</div>
-      </div>
-      <div id="colors-list">{/* colors go here */}</div>
+    <div className="App">
+            
+      <Button count={count} setCount={setCount} />
+          
     </div>
   );
-};
+}
 
-export default App;
+function Button(props) {
+  console.log("Props: ", props);
+  return (
+    <button
+      onClick={() => {
+        props.setCount(props.count+1);
+      }}
+    >
+            {props.count}
+          
+    </button>
+  );
+}
+
+//--- object deconstruction w props ---
+//
+// function Button({count, setCount}) {
+//
+//   return (
+//     <button
+//       onClick={() => {
+//         setCount(count+1)
+//       }}
+//     >
+//       {count}
+//     </button>
+//   );
+// }
